@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Menu.css';
 
 class Menu extends Component {
     render() {
         return (
-            <div>
-                <ul>
-                    <Link to="/"> Inicio </Link>
-                    <Link to="/sobre"> Sobre</Link>
-                </ul>
+            <div className="topnav">
+                <Link to="/" className="titulo"> React Beer </Link>
             </div>
         );
     }
