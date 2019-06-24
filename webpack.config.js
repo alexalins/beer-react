@@ -1,4 +1,5 @@
 const path = require('path');
+var LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = (env) => ({
     mode: env === 'prod' ? 'production' : 'development',
@@ -11,6 +12,9 @@ module.exports = (env) => ({
         port: 8080,
         contentBase: './public',
     },
+    plugins: [
+        new LiveReloadPlugin()
+    ],
     module: {
         rules: [
             {

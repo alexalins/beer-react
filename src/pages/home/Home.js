@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
-import api from '../../services/api';
+import CardInicial from '../../components/cardInicial/CardInicial';
 
 class Home extends Component {
-
-    componentDidMount() {
-        api.get().then(
-            res => {
-                console.log(res);
-                console.log(res.data);
-            }
-        )
-    }
 
     render() {
         return (
             <div>
-                <h1>HOME</h1>
+                <CardInicial />
             </div>
         );
     }
