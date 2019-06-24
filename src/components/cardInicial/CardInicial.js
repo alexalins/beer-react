@@ -7,6 +7,7 @@ class CardInicial extends Component {
         return (
             <div>
                 <div className="card">
+                    <h1>Lista de Cervejas</h1>
                     <Lista/>
                 </div>
             </div>
