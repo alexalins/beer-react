@@ -19,7 +19,9 @@ class Lista extends Component {
 
     state = {
         beers: [],
-        valor: 0
+        valor: 0,
+        antes: false,
+        prox: false
     }
 
     componentDidMount() {
@@ -30,9 +32,22 @@ class Lista extends Component {
         e = e + this.state.valor;
         axios.get('https://api.punkapi.com/v2/beers?page=' + e).then(
             res => {
-                this.setState({ beers: res.data, valor: e });
+                this.setState({ beers: res.data, valor: e});
                 console.log(this.state.beers);
                 console.log(this.state.valor);
+                console.log('antes: ' + this.state.antes + ' &prox:' + this.state.prox);
+
+                if(this.state.valor == 1) {
+                    this.setState({ antes: true });
+                } else {
+                    this.setState({ antes: false });
+                }
+
+                if(this.state.beers.length == 0){
+                    this.setState({ prox: true });
+                } else {
+                    this.setState({ prox: false });
+                }
             }
         )
     }
@@ -41,8 +56,8 @@ class Lista extends Component {
         return (
             <div>
                 <div>
-                    <Button variant="primary" onClick={() => this.paginacao(-1)}>Anterior</Button>
-                    <Button variant="primary" onClick={() => this.paginacao(1)}>Próximo</Button>
+                    <Button variant="primary" className="button" onClick={() => this.paginacao(-1)} disabled={this.state.antes}>Anterior</Button>
+                    <Button variant="primary" className="button" onClick={() => this.paginacao(1)} disabled={this.state.prox}>Próximo</Button>
                 </div>
                 <BeersList list={this.state.beers} />
             </div>
