@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { ListGroup, Button } from 'react-bootstrap';
 import './Lista.css';
 
 const BeersList = (props) => {
     return (
         <div>
-            <ul style={{ listStyleType: "none" }}>
+            <ListGroup variant="flush">
                 {props.list.map(beers => (
-                    <li>{beers.name}</li>
+                    <ListGroup.Item key={beers.id}>{beers.name} - {beers.tagline}</ListGroup.Item>
                 ))}
-            </ul>
+            </ListGroup>
         </div>
     )
 }
@@ -17,7 +18,8 @@ const BeersList = (props) => {
 class Lista extends Component {
 
     state = {
-        beers: []
+        beers: [],
+        valor: 0
     }
 
     componentDidMount() {
@@ -25,10 +27,12 @@ class Lista extends Component {
     }
 
     paginacao = (e) => {
+        e = e + this.state.valor;
         axios.get('https://api.punkapi.com/v2/beers?page=' + e).then(
             res => {
-                this.setState({ beers: res.data});
+                this.setState({ beers: res.data, valor: e });
                 console.log(this.state.beers);
+                console.log(this.state.valor);
             }
         )
     }
@@ -36,7 +40,11 @@ class Lista extends Component {
     render() {
         return (
             <div>
-                <BeersList list={this.state.beers}/>
+                <div>
+                    <Button variant="primary" onClick={() => this.paginacao(-1)}>Anterior</Button>
+                    <Button variant="primary" onClick={() => this.paginacao(1)}>Próximo</Button>
+                </div>
+                <BeersList list={this.state.beers} />
             </div>
         );
     }

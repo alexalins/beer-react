@@ -9,7 +9,6 @@ class CardInicial extends Component {
             <div>
                 <Card>
                     <Card.Body>
-                        <Card.Title>Lista de Cervejas</Card.Title>
                         <Lista />
                     </Card.Body>
                 </Card>
