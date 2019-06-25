@@ -9,7 +9,7 @@ class Router extends Component {
             <div>
                 <Switch>
                     <Route path="/" exact={true} component={Home} />
-                    <Route path="/sobre" component={Sobre} />
+                    <Route path="/sobre/:id" component={Sobre} />
                 </Switch>
             </div>
         );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ListGroup, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Lista.css';
 
 const BeersList = (props) => {
@@ -8,7 +9,7 @@ const BeersList = (props) => {
         <div>
             <ListGroup variant="flush">
                 {props.list.map(beers => (
-                    <ListGroup.Item key={beers.id}>{beers.name} - {beers.tagline}</ListGroup.Item>
+                    <ListGroup.Item key={beers.id}><Link to={'/sobre/1'}>{beers.name} - {beers.tagline}</Link></ListGroup.Item>
                 ))}
             </ListGroup>
         </div>
