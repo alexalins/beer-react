@@ -9,7 +9,7 @@ const BeersList = (props) => {
         <div>
             <ListGroup variant="flush">
                 {props.list.map(beers => (
-                    <ListGroup.Item key={beers.id}><Link to={'/sobre/1'}>{beers.name} - {beers.tagline}</Link></ListGroup.Item>
+                    <Link  key={beers.id} to={`/sobre/${beers.id}`}><ListGroup.Item action className="link">{beers.name} - {beers.tagline}</ListGroup.Item></Link>
                 ))}
             </ListGroup>
         </div>
@@ -31,20 +31,17 @@ class Lista extends Component {
 
     paginacao = (e) => {
         e = e + this.state.valor;
-        axios.get('https://api.punkapi.com/v2/beers?page=' + e).then(
+        axios.get(`https://api.punkapi.com/v2/beers?page=${e}`).then(
             res => {
                 this.setState({ beers: res.data, valor: e});
-                console.log(this.state.beers);
-                console.log(this.state.valor);
-                console.log('antes: ' + this.state.antes + ' &prox:' + this.state.prox);
 
-                if(this.state.valor == 1) {
+                if(this.state.valor === 1) {
                     this.setState({ antes: true });
                 } else {
                     this.setState({ antes: false });
                 }
 
-                if(this.state.beers.length == 0){
+                if(this.state.beers.length === 0){
                     this.setState({ prox: true });
                 } else {
                     this.setState({ prox: false });
