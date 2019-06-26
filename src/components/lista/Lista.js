@@ -9,7 +9,7 @@ const BeersList = (props) => {
         <div>
             <ListGroup variant="flush">
                 {props.list.map(beers => (
-                    <Link  key={beers.id} to={`/sobre/${beers.id}`}><ListGroup.Item action className="link">{beers.name} - {beers.tagline}</ListGroup.Item></Link>
+                    <Link key={beers.id} to={`/sobre/${beers.id}`}><ListGroup.Item action className="link">{beers.name} - {beers.tagline}</ListGroup.Item></Link>
                 ))}
             </ListGroup>
         </div>
@@ -17,7 +17,7 @@ const BeersList = (props) => {
 }
 
 class Lista extends Component {
-
+ 
     state = {
         beers: [],
         valor: 0,
