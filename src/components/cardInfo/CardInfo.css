@@ -1,0 +1,14 @@
+.foto {
+    max-width:150px;
+    max-height:300px;
+    width: auto;
+    height: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.card {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 5%;
+}

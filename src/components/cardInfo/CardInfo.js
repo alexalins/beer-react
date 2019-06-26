@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import Axios from 'axios';
+import './CardInfo.css'
 
 class CardInfo extends Component {
 
@@ -8,7 +9,7 @@ class CardInfo extends Component {
         beer: []
     }
 
-    componentDidMount = () =>{
+    componentDidMount = () => {
         let id = this.props.id;
         Axios.get('https://api.punkapi.com/v2/beers/' + id).then(
             res => {
@@ -21,12 +22,20 @@ class CardInfo extends Component {
     render() {
         return (
             <div>
-                <Card>
-                    <Card.Img variant="top" src={this.state.beer.image_url} width="100px" height="100px"/>
-                    <Card.Body>
-                        <Card.Title>{this.state.beer.name}</Card.Title>
-                        <Card.Text>{this.state.beer.description}</Card.Text>
-                    </Card.Body>
+                <Card className="card">
+                    <Container>
+                        <Row>
+                            <Col sm={4}>
+                                <Card.Img variant="top" className="foto" src={this.state.beer.image_url} />
+                            </Col>
+                            <Col sm={8}>
+                                <Card.Body>
+                                    <Card.Title>{this.state.beer.name}</Card.Title>
+                                    <Card.Text>{this.state.beer.description}</Card.Text>
+                                </Card.Body>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Card>
             </div>
         );

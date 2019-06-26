@@ -6,7 +6,8 @@ module.exports = (env) => ({
     entry: './src/index.js',
     output: {
         path: __dirname + '/public',
-        filename: './app.js'
+        filename: './app.js',
+        publicPath: '/'
     },
     devServer: {
         port: 8080,
