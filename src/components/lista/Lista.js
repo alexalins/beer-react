@@ -54,8 +54,8 @@ class Lista extends Component {
         return (
             <div>
                 <div>
-                    <Button variant="primary" className="button" onClick={() => this.paginacao(-1)} disabled={this.state.antes}>Anterior</Button>
-                    <Button variant="primary" className="button" onClick={() => this.paginacao(1)} disabled={this.state.prox}>Próximo</Button>
+                    <Button variant="dark" className="button" onClick={() => this.paginacao(-1)} disabled={this.state.antes}>Previous</Button>
+                    <Button variant="dark" className="button" onClick={() => this.paginacao(1)} disabled={this.state.prox}>Next</Button>
                 </div>
                 <BeersList list={this.state.beers} />
             </div>
