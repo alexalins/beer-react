@@ -2,5 +2,5 @@
 
 ## Rodando a aplicação
 
-### `npm start`
-### `http://localhost:8080`
+#### `npm start`
+#### `http://localhost:8080`
